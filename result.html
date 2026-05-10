@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="title">🌱 Smart Farming Dashboard</h1>
+
+{% if best_crop %}
+
+<div class="best-crop">
+
+🏆 Best Crop:
+<strong>{{ best_crop.name }}</strong>
+
+| Profit: ₹{{ best_crop.profit }}
+
+</div>
+
+{% endif %}
+
+<h2 class="section-title">🕘 Search History</h2>
+
+<div class="history-box">
+
+{% for h in history %}
+
+<p>
+
+{{ h.season }}
+|
+{{ h.soil }}
+|
+{{ h.water }}
+|
+₹{{ h.budget }}
+
+</p>
+
+{% endfor %}
+
+<a href="/clear-history">
+
+<button class="clear-btn">
+
+Clear History
+
+</button>
+
+</a>
+
+</div>
+
+{% for category, items in results.items() %}
+
+<h2 class="section-title">
+
+{{ category }}
+
+</h2>
+
+<div class="grid">
+
+{% for name, item in items.items() %}
+
+<div class="card">
+
+<h2>{{ name }}</h2>
+
+<p>💰 Investment: ₹{{ item.data.investment }}</p>
+
+<p>📈 Profit: ₹{{ item.profit.profit }}</p>
+
+<p>🌾 Yield: {{ item.profit.yield }} tons/acre</p>
+
+<p>⏳ Duration: {{ item.data.duration }}</p>
+
+<p>💧 Watering: {{ item.data.watering_period }}</p>
+
+<p>🕒 Water Time: {{ item.data.watering_time }}</p>
+
+<p>🚿 Irrigation: {{ item.data.irrigation_method }}</p>
+
+<p>🌦 Weather: {{ item.data.weather }}</p>
+
+<p>🌿 Fertilizer: {{ item.data.fertilizer }}</p>
+
+<p>📌 Harvest Point: {{ item.data.harvest_point }}</p>
+
+<p>✂ Harvest Method: {{ item.data.harvest_method }}</p>
+
+<p>📦 Storage: {{ item.data.storage }}</p>
+
+<h3>🌱 Natural Pesticides</h3>
+
+{% for p in item.data.pesticides %}
+
+<div class="pesticide-box">
+
+<p><strong>{{ p.name }}</strong></p>
+
+<p>🧪 {{ p.method }}</p>
+
+<p>📌 {{ p.usage }}</p>
+
+<p>⚠ {{ p.safety }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="title">🌱 Agri Guide</h1>
+
+<div class="form-box">
+
+<form action="/result" method="POST">
+
+<label>🌤 Select Season</label>
+
+<select name="season">
+
+<option>Summer</option>
+<option>Winter</option>
+<option>Rainy</option>
+
+</select>
+
+<label>🌍 Select Soil</label>
+
+<select name="soil">
+
+<option>Sandy Soil</option>
+<option>Clay Soil</option>
+<option>Loamy Soil</option>
+<option>Silt Soil</option>
+<option>Black Soil</option>
+<option>Red Soil</option>
+<option>Alluvial Soil</option>
+
+</select>
+
+<label>💧 Water Availability</label>
+
+<select name="water">
+
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+
+</select>
+
+<label>💰 Budget</label>
+
+<input
+type="number"
+name="budget"
+placeholder="Enter budget"
+required
+>
+
+<button type="submit">
+
+🌾 Get Crop Suggestions
+
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}
